@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:shopify/constants/constants.dart';
 import 'package:shopify/views/entry_point.dart';
 
-Widget defaultHome = const MainScreen();
+Widget defaultHome = MainScreen();
 
 void main() {
   runApp(const MyApp());
