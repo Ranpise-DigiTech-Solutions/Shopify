@@ -1,23 +1,35 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import 'package:get/get.dart';
 
 import 'package:shopify/constants/constants.dart';
 import 'package:shopify/controllers/tab_index_controller.dart';
+import 'package:shopify/views/cart/cart_page.dart';
+import 'package:shopify/views/home/home_page.dart';
+import 'package:shopify/views/profile/profile_page.dart';
+import 'package:shopify/views/search/search_page.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+  MainScreen({super.key});
+
+  List<Widget> pageList = [
+    HomePage(),
+    const SearchPage(),
+    const CartPage(),
+    const ProfilePage()
+  ];
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TabIndexController());
+
     return Obx(() => Scaffold(
           body: Stack(
             children: [
-              Container(height: height, width: width, color: kOffWhite),
+              pageList[controller.tabIndex],
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Theme(
